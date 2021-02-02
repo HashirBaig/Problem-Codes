@@ -1,0 +1,27 @@
+class Solution():
+    def lengthOfTheLongestSubstring(self, s):
+        #Fill this in
+        self.s = s
+        self.a={}
+        self.x=0
+        self.y=0
+        self.d=0
+        self.dup=False
+        
+        for i in self.s:
+            if(i==(self.s[(self.x-1):self.x])):
+                self.d=self.d+1
+                self.dup=True
+                if(self.dup==True and self.d==1):
+                    self.a[len(self.s[self.y:((self.x+1)-(self.d+1))])] = self.s[self.y:((self.x+1)-(self.d+1))]
+                    self.y=self.x+1
+                
+            else:
+                self.dup = False
+                self.d=0
+            self.x=self.x+1
+        print(self.a)
+                
+        return self.a[max(self.a)]
+        
+print(Solution().lengthOfTheLongestSubstring('abrkaabcdefghijjxxx'))
